@@ -1,270 +1,273 @@
-# 🚀 Event-Driven & Messaging Architecture
-Advanced projects demonstrating asynchronous communication patterns, message brokers, 
-and event-driven microservices architecture using Apache Kafka and RabbitMQ.
+# 🚀 Arquitectura Event-Driven y Mensajería
+
+Proyectos avanzados que demuestran patrones de comunicación asíncrona, message brokers y arquitectura de microservicios orientada a eventos usando Apache Kafka y RabbitMQ.
 
 ---
 
-## 📚 Projects Overview
+## 📚 Resumen de Proyectos
 
-### Foundation Projects (Learn the Basics)
-These projects introduce the fundamental concepts of event-driven architecture and message brokers.
+### Proyectos Fundamentales (Aprender los Básicos)
+
+Estos proyectos introducen los conceptos fundamentales de arquitectura orientada a eventos y message brokers.
 
 #### 1. **[kafka-tutorial](https://github.com/Cortadai/kafka-tutorial)**
-   Introduction to Apache Kafka with Spring Boot
-   - **Technology:** Spring Boot 3.1.8, Apache Kafka, Java
-   - **Focus:** Producer-Consumer pattern, message serialization
-   - **Key Concepts:**
-     - Kafka topics, partitions, and consumer groups
-     - Publishing simple text messages
-     - Publishing/consuming JSON objects (User DTOs)
-     - Spring Kafka integration (@KafkaListener)
-   - **REST Endpoints:**
-     - `GET /api/v1/kafka/publish?message=<text>` - Publish text messages
-     - `POST /api/v1/kafka/publish/user` - Publish JSON messages
-   - **Learning Outcome:** Understand Kafka basics and Spring Kafka integration
-   - **Perfect For:** Beginners starting with event-driven architecture
+   Introducción a Apache Kafka con Spring Boot
+   - **Tecnología:** Spring Boot 3.1.8, Apache Kafka, Java
+   - **Enfoque:** Patrón Producer-Consumer, serialización de mensajes
+   - **Conceptos Clave:**
+     - Topics, particiones y consumer groups de Kafka
+     - Publicación de mensajes de texto simples
+     - Publicación/consumo de objetos JSON (User DTOs)
+     - Integración Spring Kafka (@KafkaListener)
+   - **Endpoints REST:**
+     - `GET /api/v1/kafka/publish?message=<texto>` - Publicar mensajes de texto
+     - `POST /api/v1/kafka/publish/user` - Publicar mensajes JSON
+   - **Resultado de Aprendizaje:** Entender los básicos de Kafka e integración con Spring Kafka
+   - **Perfecto Para:** Principiantes comenzando con arquitectura orientada a eventos
    
-   **Example Flow:**
+   **Flujo de Ejemplo:**
    ```
-   Client → Spring Boot App → Kafka Topic → Consumer Listener → Log Output
+   Cliente → App Spring Boot → Topic Kafka → Consumer Listener → Salida en Log
    ```
 
 #### 2. **[rabbitmq-tutorial](https://github.com/Cortadai/rabbitmq-tutorial)**
-   Introduction to RabbitMQ with Spring Boot
-   - **Technology:** Spring Boot 3.x, RabbitMQ (AMQP), Java
-   - **Focus:** Message broker patterns, Topic Exchange, routing
-   - **Key Concepts:**
-     - RabbitMQ exchanges (Topic Exchange)
-     - Queue bindings and routing keys
-     - Producer-Consumer pattern with @RabbitListener
-     - Message serialization (text and JSON)
-   - **REST Endpoints:**
-     - Text messaging endpoints
-     - JSON object messaging endpoints
-   - **Learning Outcome:** Master RabbitMQ message broker concepts
-   - **Perfect For:** Developers learning AMQP and message queuing
+   Introducción a RabbitMQ con Spring Boot
+   - **Tecnología:** Spring Boot 3.x, RabbitMQ (AMQP), Java
+   - **Enfoque:** Patrones de message broker, Topic Exchange, enrutamiento
+   - **Conceptos Clave:**
+     - Exchanges de RabbitMQ (Topic Exchange)
+     - Bindings de colas y routing keys
+     - Patrón Producer-Consumer con @RabbitListener
+     - Serialización de mensajes (texto y JSON)
+   - **Endpoints REST:**
+     - Endpoints de mensajería de texto
+     - Endpoints de mensajería de objetos JSON
+   - **Resultado de Aprendizaje:** Dominar conceptos de message broker RabbitMQ
+   - **Perfecto Para:** Desarrolladores aprendiendo AMQP y colas de mensajes
    
-   **Architecture Pattern:**
+   **Patrón de Arquitectura:**
    ```
-   Producer → Exchange → Queue (with routing key) → Consumer Listener
+   Productor → Exchange → Cola (con routing key) → Consumer Listener
    ```
 
 #### 3. **[kafka-server-local](https://github.com/Cortadai/kafka-server-local)**
-   Apache Kafka 3.6.1 complete installation for local development
-   - **Technology:** Apache Kafka, ZooKeeper, Kafka Connect
-   - **Contents:**
-     - Complete Kafka broker setup
-     - ZooKeeper configuration
-     - Kafka Connect for integrations
-     - Admin scripts and tools (/bin directory)
-     - Configuration files (/config directory)
-     - All necessary libraries (/libs directory)
-   - **Purpose:** Ready-to-run Kafka environment
-   - **Use Case:** Local development, testing, experimentation
-   - **Includes:** Single-node cluster, producer/consumer scripts, monitoring tools
-   - **Learning Outcome:** Understand Kafka infrastructure and deployment
-   - **Perfect For:** DevOps engineers, infrastructure setup
+   Instalación completa de Apache Kafka 3.6.1 para desarrollo local
+   - **Tecnología:** Apache Kafka, ZooKeeper, Kafka Connect
+   - **Contenidos:**
+     - Configuración completa de broker Kafka
+     - Configuración de ZooKeeper
+     - Kafka Connect para integraciones
+     - Scripts de administración y herramientas (directorio /bin)
+     - Archivos de configuración (directorio /config)
+     - Todas las librerías necesarias (directorio /libs)
+   - **Propósito:** Entorno Kafka listo para ejecutar
+   - **Caso de Uso:** Desarrollo local, testing, experimentación
+   - **Incluye:** Cluster de nodo único, scripts producer/consumer, herramientas de monitorización
+   - **Resultado de Aprendizaje:** Entender infraestructura y despliegue de Kafka
+   - **Perfecto Para:** Ingenieros DevOps, configuración de infraestructura
 
 ---
 
-### Intermediate Projects (Microservices with Events)
-These projects show how to build microservices that communicate asynchronously through events.
+### Proyectos Intermedios (Microservicios con Eventos)
+
+Estos proyectos muestran cómo construir microservicios que se comunican asíncronamente a través de eventos.
 
 #### 4. **[springboot-microservices-kafka](https://github.com/Cortadai/springboot-microservices-kafka)**
-   Microservices architecture using Apache Kafka for async communication
-   - **Technology:** Spring Boot 3.x, Apache Kafka, Java 17, Docker
-   - **Architecture:** Event-Driven Microservices
-   - **Services:**
-     1. **Order Service** (Microservice 1)
-        - Exposes REST API: `POST /api/v1/orders`
-        - Receives order requests
-        - Generates UUID for tracking
-        - Creates `OrderEventDto` with status "PENDING"
-        - Publishes event to Kafka topic "orders"
+   Arquitectura de microservicios usando Apache Kafka para comunicación asíncrona
+   - **Tecnología:** Spring Boot 3.x, Apache Kafka, Java 17, Docker
+   - **Arquitectura:** Microservicios Event-Driven
+   - **Servicios:**
+     1. **Order Service** (Microservicio 1)
+        - Expone API REST: `POST /api/v1/orders`
+        - Recibe peticiones de pedidos
+        - Genera UUID para seguimiento
+        - Crea `OrderEventDto` con estado "PENDING"
+        - Publica evento al topic Kafka "orders"
      
-     2. **Email Service** (Consumer)
-        - Listens to "orders" topic
-        - Sends email notifications to customers
-        - Decoupled from Order Service
+     2. **Email Service** (Consumidor)
+        - Escucha el topic "orders"
+        - Envía notificaciones por email a clientes
+        - Desacoplado del Order Service
      
-     3. **Stock Service** (Consumer)
-        - Listens to "orders" topic
-        - Updates inventory/stock
-        - Persists to database
-        - Independent scaling and deployment
+     3. **Stock Service** (Consumidor)
+        - Escucha el topic "orders"
+        - Actualiza inventario/stock
+        - Persiste en base de datos
+        - Escalado y despliegue independientes
    
-   - **Shared Module:** base-domain (DTOs: OrderDto, OrderEventDto)
+   - **Módulo Compartido:** base-domain (DTOs: OrderDto, OrderEventDto)
    
-   - **Key Concepts:**
-     - Asynchronous event publishing
-     - Multiple independent consumers
-     - Event payload standardization
-     - Decoupled microservices
-     - Kafka topic partitioning
+   - **Conceptos Clave:**
+     - Publicación asíncrona de eventos
+     - Múltiples consumidores independientes
+     - Estandarización de payload de eventos
+     - Microservicios desacoplados
+     - Particionado de topics Kafka
    
-   - **Communication Flow:**
+   - **Flujo de Comunicación:**
    ```
-   REST Client → Order Service → Kafka Topic (orders) → Email Service & Stock Service
-                                                          ↓                ↓
-                                                       Send Email      Update Stock
+   Cliente REST → Order Service → Topic Kafka (orders) → Email Service & Stock Service
+                                                           ↓                ↓
+                                                      Enviar Email    Actualizar Stock
    ```
    
-   - **Benefits:**
-     - ✅ Services are fully decoupled
-     - ✅ Each service scales independently
-     - ✅ Resilient to service failures
-     - ✅ Supports adding new consumers without changing Order Service
+   - **Beneficios:**
+     - ✅ Servicios completamente desacoplados
+     - ✅ Cada servicio escala independientemente
+     - ✅ Resiliente a fallos de servicios
+     - ✅ Soporta agregar nuevos consumidores sin cambiar Order Service
    
-   - **Learning Outcome:** Build event-driven microservices with Kafka
-   - **Perfect For:** Understanding async communication between services
+   - **Resultado de Aprendizaje:** Construir microservicios event-driven con Kafka
+   - **Perfecto Para:** Entender comunicación asíncrona entre servicios
 
 #### 5. **[springboot-microservices-rabbitmq](https://github.com/Cortadai/springboot-microservices-rabbitmq)**
-   Microservices architecture using RabbitMQ for async communication
-   - **Technology:** Spring Boot 3.x, RabbitMQ (AMQP), Java 17, Docker
-   - **Architecture:** Event-Driven Microservices (Alternative to Kafka)
-   - **Services:**
-     1. **Order Service** (Port 8080)
-        - REST API: `POST /api/v1/orders`
-        - Publishes order events to RabbitMQ TopicExchange
-        - Generates events with status
+   Arquitectura de microservicios usando RabbitMQ para comunicación asíncrona
+   - **Tecnología:** Spring Boot 3.x, RabbitMQ (AMQP), Java 17, Docker
+   - **Arquitectura:** Microservicios Event-Driven (Alternativa a Kafka)
+   - **Servicios:**
+     1. **Order Service** (Puerto 8080)
+        - API REST: `POST /api/v1/orders`
+        - Publica eventos de pedidos a RabbitMQ TopicExchange
+        - Genera eventos con estado
      
-     2. **Stock Service** (Port 8081)
-        - Consumes order events
-        - Updates inventory
-        - Persists changes
+     2. **Stock Service** (Puerto 8081)
+        - Consume eventos de pedidos
+        - Actualiza inventario
+        - Persiste cambios
      
-     3. **Email Service** (Port 8082)
-        - Consumes order events
-        - Sends confirmation emails
+     3. **Email Service** (Puerto 8082)
+        - Consume eventos de pedidos
+        - Envía emails de confirmación
    
-   - **RabbitMQ Components:**
-     - TopicExchange for flexible routing
-     - Multiple queues bound to exchange
-     - Routing keys for message distribution
+   - **Componentes RabbitMQ:**
+     - TopicExchange para enrutamiento flexible
+     - Múltiples colas vinculadas al exchange
+     - Routing keys para distribución de mensajes
    
-   - **Key Concepts:**
-     - RabbitMQ vs Kafka differences
-     - TopicExchange patterns
-     - Queue binding strategies
-     - Spring AMQP integration
+   - **Conceptos Clave:**
+     - Diferencias RabbitMQ vs Kafka
+     - Patrones TopicExchange
+     - Estrategias de binding de colas
+     - Integración Spring AMQP
    
-   - **Communication Flow:**
+   - **Flujo de Comunicación:**
    ```
-   REST Client → Order Service → TopicExchange → Stock & Email Services
-                                     ↓
-                            Distributed via Routing Keys
+   Cliente REST → Order Service → TopicExchange → Stock & Email Services
+                                      ↓
+                             Distribuido vía Routing Keys
    ```
    
-   - **When to Use RabbitMQ vs Kafka:**
-     - RabbitMQ: Smaller systems, flexible routing, traditional message queue needs
-     - Kafka: High-volume streaming, event sourcing, log-based systems
+   - **Cuándo Usar RabbitMQ vs Kafka:**
+     - RabbitMQ: Sistemas pequeños, enrutamiento flexible, necesidades tradicionales de cola de mensajes
+     - Kafka: Streaming de alto volumen, event sourcing, sistemas basados en logs
    
-   - **Learning Outcome:** Compare Kafka and RabbitMQ approaches
-   - **Perfect For:** Understanding alternative event broker architectures
+   - **Resultado de Aprendizaje:** Comparar enfoques Kafka y RabbitMQ
+   - **Perfecto Para:** Entender arquitecturas alternativas de event broker
 
 ---
 
-### Advanced Projects (Real-World Scenarios)
-Production-grade examples demonstrating complex event-driven patterns.
+### Proyectos Avanzados (Escenarios del Mundo Real)
+
+Ejemplos de grado de producción demostrando patrones event-driven complejos.
 
 #### 6. **[springboot-kafka-real-world-project](https://github.com/Cortadai/springboot-kafka-real-world-project)**
-   Real-world event streaming pipeline: Wikimedia → Kafka → Database
-   - **Technology:** Spring Boot, Apache Kafka, Server-Sent Events (SSE)
-   - **Architecture:** Complete streaming pipeline
-   - **Components:**
-     1. **Kafka Producer Module** (kafka-producer-wikimedia)
-        - Connects to Wikimedia EventStreams (live Wikipedia changes)
-        - Uses Server-Sent Events (SSE) protocol
-        - Publishes events continuously to Kafka topic
-        - Events: page creations, edits, deletions, user actions
+   Pipeline de streaming de eventos del mundo real: Wikimedia → Kafka → Base de Datos
+   - **Tecnología:** Spring Boot, Apache Kafka, Server-Sent Events (SSE)
+   - **Arquitectura:** Pipeline de streaming completo
+   - **Componentes:**
+     1. **Módulo Kafka Producer** (kafka-producer-wikimedia)
+        - Se conecta a Wikimedia EventStreams (cambios en vivo de Wikipedia)
+        - Usa protocolo Server-Sent Events (SSE)
+        - Publica eventos continuamente a topic Kafka
+        - Eventos: creaciones de páginas, ediciones, eliminaciones, acciones de usuarios
      
-     2. **Kafka Consumer Module** (kafka-consumer-database)
-        - Listens to Kafka topic
-        - Receives real-time Wikipedia change events
-        - Persists to database using Spring Data JPA
-        - Stores complete event history
+     2. **Módulo Kafka Consumer** (kafka-consumer-database)
+        - Escucha topic Kafka
+        - Recibe eventos de cambios de Wikipedia en tiempo real
+        - Persiste en base de datos usando Spring Data JPA
+        - Almacena historial completo de eventos
    
-   - **Real-World Data Source:**
-     - Wikimedia EventStreams API (public, no auth required)
-     - Live events from Wikipedia in real-time
-     - Thousands of events per minute
+   - **Fuente de Datos del Mundo Real:**
+     - API Wikimedia EventStreams (pública, sin autenticación requerida)
+     - Eventos en vivo desde Wikipedia en tiempo real
+     - Miles de eventos por minuto
    
-   - **Event Examples:**
+   - **Ejemplos de Eventos:**
      ```
-     - Page "Machine Learning" edited by user "Alice"
-     - New page "AI Safety" created by user "Bob"
-     - Page "Python Programming" reverted by admin
+     - Página "Machine Learning" editada por usuario "Alice"
+     - Nueva página "AI Safety" creada por usuario "Bob"
+     - Página "Python Programming" revertida por admin
      ```
    
-   - **Data Pipeline:**
+   - **Pipeline de Datos:**
    ```
-   Wikimedia → SSE Stream → Kafka Producer → Kafka Topic → Kafka Consumer → Database
-                (External)      (Ingestion)    (Buffer)      (Ingestion)     (Storage)
+   Wikimedia → Stream SSE → Kafka Producer → Topic Kafka → Kafka Consumer → Base de Datos
+               (Externo)      (Ingesta)       (Buffer)       (Ingesta)      (Almacenamiento)
    ```
    
-   - **Key Concepts:**
-     - Real-time event ingestion
-     - Producer-consumer pipeline
-     - Handling high-volume events
-     - Event persistence
-     - Stream processing basics
+   - **Conceptos Clave:**
+     - Ingesta de eventos en tiempo real
+     - Pipeline producer-consumer
+     - Manejo de eventos de alto volumen
+     - Persistencia de eventos
+     - Fundamentos de procesamiento de streams
    
-   - **Challenges Solved:**
-     - ✅ Buffering with Kafka
-     - ✅ Handling backpressure
-     - ✅ Event persistence
-     - ✅ Error handling
-     - ✅ Scalable ingestion
+   - **Desafíos Resueltos:**
+     - ✅ Buffering con Kafka
+     - ✅ Manejo de backpressure
+     - ✅ Persistencia de eventos
+     - ✅ Manejo de errores
+     - ✅ Ingesta escalable
    
-   - **Learning Outcome:** Build production-grade event streaming systems
-   - **Perfect For:** Understanding real-world event pipelines
+   - **Resultado de Aprendizaje:** Construir sistemas de streaming de eventos de grado de producción
+   - **Perfecto Para:** Entender pipelines de eventos del mundo real
 
 ---
 
-## 🏗️ Architecture Patterns
+## 🏗️ Patrones de Arquitectura
 
-### Pattern 1: Simple Producer-Consumer (Tutorials)
+### Patrón 1: Producer-Consumer Simple (Tutoriales)
 ```
 ┌─────────────────────────────────────────┐
-│           Producer                      │
-│  (Publishes messages to topic)          │
+│           Productor                     │
+│  (Publica mensajes al topic)            │
 ├─────────────────────────────────────────┤
-│  REST Endpoint receives request        │
-│  → Creates message                     │
-│  → Publishes to Kafka/RabbitMQ         │
-│  → Returns immediately                 │
+│  Endpoint REST recibe petición         │
+│  → Crea mensaje                        │
+│  → Publica a Kafka/RabbitMQ            │
+│  → Retorna inmediatamente              │
 └──────────────┬──────────────────────────┘
                │
                ▼
 ┌──────────────────────────┐
-│   Kafka/RabbitMQ Topic   │
-│   (Distributed Buffer)   │
+│   Topic Kafka/RabbitMQ   │
+│   (Buffer Distribuido)   │
 └──────────────┬───────────┘
                │
      ┌─────────┴──────────┐
      ▼                    ▼
 ┌──────────────┐    ┌──────────────┐
-│  Consumer 1  │    │  Consumer 2  │
+│ Consumidor 1 │    │ Consumidor 2 │
 │ (Listener)   │    │ (Listener)   │
 │              │    │              │
-│ Log Message  │    │ Save to DB   │
+│ Log Mensaje  │    │ Guardar en BD│
 └──────────────┘    └──────────────┘
 ```
 
-### Pattern 2: Event-Driven Microservices
+### Patrón 2: Microservicios Event-Driven
 ```
 ┌────────────────────────────────────────┐
-│         Client Request                 │
+│      Petición del Cliente              │
 │   POST /api/v1/orders                  │
 └────────────────┬───────────────────────┘
                  │
                  ▼
         ┌──────────────────┐
         │  Order Service   │
-        │  (Producer)      │
+        │  (Productor)     │
         └────────┬─────────┘
                  │
-      Publishes: OrderCreatedEvent
+      Publica: OrderCreatedEvent
                  │
                  ▼
         ┌──────────────────┐
@@ -283,290 +286,293 @@ Production-grade examples demonstrating complex event-driven patterns.
     │            │             │
     └────┬───────┴─────────────┘
          │
-    All react independently to same event
-    No direct coupling
+    Todos reaccionan independientemente al mismo evento
+    Sin acoplamiento directo
 ```
 
-### Pattern 3: Real-World Streaming Pipeline
+### Patrón 3: Pipeline de Streaming del Mundo Real
 ```
 ┌──────────────────────┐
-│   External Source    │
-│  (Wikimedia API)     │
-│  - High volume       │
-│  - Continuous stream │
+│   Fuente Externa     │
+│  (API Wikimedia)     │
+│  - Alto volumen      │
+│  - Stream continuo   │
 └──────────┬───────────┘
            │
            ▼
 ┌──────────────────────────┐
-│   Kafka Producer App    │
-│  - SSE connection       │
-│  - Event parsing        │
-│  - Kafka publishing     │
+│   App Kafka Producer    │
+│  - Conexión SSE         │
+│  - Parsing de eventos   │
+│  - Publicación Kafka    │
 └──────────┬──────────────┘
            │
-    High-volume events
+    Eventos de alto volumen
            │
            ▼
 ┌──────────────────────────┐
-│   Kafka Cluster         │
-│  - Partitioned topics   │
-│  - Distributed buffer   │
-│  - Fault tolerance      │
+│   Cluster Kafka         │
+│  - Topics particionados │
+│  - Buffer distribuido   │
+│  - Tolerancia a fallos  │
 └──────────┬──────────────┘
            │
-     Multiple partitions
+     Múltiples particiones
            │
            ▼
 ┌──────────────────────────┐
-│   Kafka Consumer App    │
-│  - Event deserialization│
-│  - Data transformation  │
-│  - Database persistence │
+│   App Kafka Consumer    │
+│  - Deserialización      │
+│  - Transformación datos │
+│  - Persistencia BD      │
 └──────────┬──────────────┘
            │
            ▼
 ┌──────────────────────────┐
-│   Database              │
-│  - Event archive        │
-│  - Historical data      │
-│  - Analytics source     │
+│   Base de Datos         │
+│  - Archivo de eventos   │
+│  - Datos históricos     │
+│  - Fuente analytics     │
 └──────────────────────────┘
 ```
 
 ---
 
-## 🛠️ Technology Stack
+## 🛠️ Stack Tecnológico
 
 ### Message Brokers
-- **Apache Kafka** - Distributed streaming platform
-  - High throughput (millions of events/sec)
-  - Persistent log-based storage
-  - Consumer group support
-  - Partitioning for scalability
-  - Best for: Event sourcing, real-time streaming, audit logs
+- **Apache Kafka** - Plataforma de streaming distribuida
+  - Alto rendimiento (millones de eventos/seg)
+  - Almacenamiento persistente basado en logs
+  - Soporte de consumer groups
+  - Particionado para escalabilidad
+  - Mejor para: Event sourcing, streaming tiempo real, logs de auditoría
   
-- **RabbitMQ** - Message broker with AMQP
-  - Flexible routing (Exchanges)
-  - Queue-based messaging
-  - Acknowledgment guarantees
-  - Better for complex routing scenarios
-  - Best for: Traditional queuing, microservices, job distribution
+- **RabbitMQ** - Message broker con AMQP
+  - Enrutamiento flexible (Exchanges)
+  - Mensajería basada en colas
+  - Garantías de confirmación
+  - Mejor para escenarios de enrutamiento complejos
+  - Mejor para: Colas tradicionales, microservicios, distribución de trabajos
 
-### Spring Ecosystem
-- **Spring Boot** - Application framework
-- **Spring Kafka** - Kafka integration
-- **Spring AMQP** - RabbitMQ integration
-- **Spring Data JPA** - Persistence layer
+### Ecosistema Spring
+- **Spring Boot** - Framework de aplicación
+- **Spring Kafka** - Integración con Kafka
+- **Spring AMQP** - Integración con RabbitMQ
+- **Spring Data JPA** - Capa de persistencia
 
-### Infrastructure
-- **Docker & Docker Compose** - Containerization and orchestration
-- **Java 17+** - Programming language
-- **Maven** - Build tool
-- **ZooKeeper** - Kafka coordination (included with Kafka)
+### Infraestructura
+- **Docker & Docker Compose** - Contenerización y orquestación
+- **Java 17+** - Lenguaje de programación
+- **Maven** - Herramienta de construcción
+- **ZooKeeper** - Coordinación de Kafka (incluido con Kafka)
 
 ---
 
-## 📊 Comparison Matrix
+## 📊 Matriz de Comparación
 
-| Feature | Kafka Tutorial | RabbitMQ Tutorial | Kafka Microservices | RabbitMQ Microservices | Real-World Pipeline |
-|---------|---|---|---|---|---|
+| Característica | Kafka Tutorial | RabbitMQ Tutorial | Kafka Microservices | RabbitMQ Microservices | Real-World Pipeline |
+|----------------|---|---|---|---|---|
 | **Broker** | Kafka | RabbitMQ | Kafka | RabbitMQ | Kafka |
-| **Pattern** | Producer-Consumer | Producer-Consumer | Event-Driven Services | Event-Driven Services | Streaming Pipeline |
-| **Services** | 1 app | 1 app | 3+ microservices | 3 microservices | 2 apps |
-| **Complexity** | Beginner | Beginner | Intermediate | Intermediate | Advanced |
-| **Data Source** | Manual | Manual | Internal (orders) | Internal (orders) | External (Wikimedia) |
-| **Scale** | Small | Small | Medium | Medium | Large (high volume) |
-| **Use Case** | Learning | Learning | Production-ready | Production-ready | Real production |
-| **Learning Time** | 1-2 days | 1-2 days | 1 week | 1 week | 2+ weeks |
+| **Patrón** | Producer-Consumer | Producer-Consumer | Servicios Event-Driven | Servicios Event-Driven | Pipeline Streaming |
+| **Servicios** | 1 app | 1 app | 3+ microservicios | 3 microservicios | 2 apps |
+| **Complejidad** | Principiante | Principiante | Intermedio | Intermedio | Avanzado |
+| **Fuente de Datos** | Manual | Manual | Interno (pedidos) | Interno (pedidos) | Externo (Wikimedia) |
+| **Escala** | Pequeña | Pequeña | Media | Media | Grande (alto volumen) |
+| **Caso de Uso** | Aprendizaje | Aprendizaje | Listo para producción | Listo para producción | Producción real |
+| **Tiempo Aprendizaje** | 1-2 días | 1-2 días | 1 semana | 1 semana | 2+ semanas |
 
 ---
 
-## 🚀 Quick Start Guides
+## 🚀 Guías de Inicio Rápido
 
-### Getting Started with Kafka
+### Empezando con Kafka
 ```bash
-# 1. Start Kafka locally using kafka-server-local setup
+# 1. Iniciar Kafka localmente usando configuración kafka-server-local
 cd kafka-server-local
-# Follow the setup instructions
+# Seguir instrucciones de configuración
 
-# 2. Run Kafka Tutorial
+# 2. Ejecutar Kafka Tutorial
 git clone https://github.com/Cortadai/kafka-tutorial.git
 cd kafka-tutorial
 mvn clean install
 mvn spring-boot:run
 
-# 3. Publish a message
-curl "http://localhost:8080/api/v1/kafka/publish?message=Hello%20Kafka"
+# 3. Publicar un mensaje
+curl "http://localhost:8080/api/v1/kafka/publish?message=Hola%20Kafka"
 
-# 4. Check console for message consumption
+# 4. Comprobar consola para consumo de mensaje
 ```
 
-### Getting Started with RabbitMQ
+### Empezando con RabbitMQ
 ```bash
-# 1. Start RabbitMQ (Docker)
+# 1. Iniciar RabbitMQ (Docker)
 docker run -d --name rabbitmq \
   -p 5672:5672 \
   -p 15672:15672 \
   rabbitmq:3-management
 
-# 2. Access RabbitMQ Management UI
-# Open browser: http://localhost:15672
-# Username: guest
-# Password: guest
+# 2. Acceder a RabbitMQ Management UI
+# Abrir navegador: http://localhost:15672
+# Usuario: guest
+# Contraseña: guest
 
-# 3. Run RabbitMQ Tutorial
+# 3. Ejecutar RabbitMQ Tutorial
 git clone https://github.com/Cortadai/rabbitmq-tutorial.git
 cd rabbitmq-tutorial
 mvn clean install
 mvn spring-boot:run
 
-# 4. Publish a message via REST
+# 4. Publicar mensaje vía REST
 curl -X POST http://localhost:8080/api/v1/rabbitmq/publish \
   -H "Content-Type: application/json" \
   -d '{"id":1,"firstName":"John","lastName":"Doe"}'
 ```
 
-### Running Microservices with Docker Compose
+### Ejecutando Microservicios con Docker Compose
 ```bash
-# For Kafka Microservices
+# Para Microservicios Kafka
 git clone https://github.com/Cortadai/springboot-microservices-kafka.git
 cd springboot-microservices-kafka
 docker-compose up -d
 
-# Services available at:
+# Servicios disponibles en:
 # - Order Service: http://localhost:8080
 # - Kafka: localhost:9092
 ```
 
 ---
 
-## 🎯 Learning Path
+## 🎯 Ruta de Aprendizaje
 
-### Week 1: Foundations
-#### Day 1-2: Message Broker Basics
-- What are message brokers?
-- Synchronous vs Asynchronous communication
-- Event-driven architecture basics
-- Kafka vs RabbitMQ comparison
+### Semana 1: Fundamentos
 
-#### Day 3-4: Apache Kafka Deep Dive
-- Topics, partitions, and replicas
-- Producers and consumers
+#### Día 1-2: Básicos de Message Broker
+- ¿Qué son los message brokers?
+- Comunicación Síncrona vs Asíncrona
+- Básicos de arquitectura event-driven
+- Comparación Kafka vs RabbitMQ
+
+#### Día 3-4: Inmersión Profunda en Apache Kafka
+- Topics, particiones y réplicas
+- Productores y consumidores
 - Consumer groups
-- Spring Kafka integration
-- **Hands-on:** Run kafka-tutorial
+- Integración Spring Kafka
+- **Práctica:** Ejecutar kafka-tutorial
 
-#### Day 5: RabbitMQ Concepts
-- AMQP protocol
+#### Día 5: Conceptos RabbitMQ
+- Protocolo AMQP
 - Exchanges (Topic, Fanout, Direct)
-- Queue bindings
-- Spring AMQP integration
-- **Hands-on:** Run rabbitmq-tutorial
+- Bindings de colas
+- Integración Spring AMQP
+- **Práctica:** Ejecutar rabbitmq-tutorial
 
-### Week 2: Microservices
-#### Day 6-7: Event-Driven Microservices
-- Service decoupling
-- Event publishing patterns
-- Multiple consumers
-- Handling failures
-- **Hands-on:** Run kafka-microservices
+### Semana 2: Microservicios
 
-#### Day 8-9: Alternative Implementations
-- RabbitMQ microservices comparison
-- When to use each broker
-- Trade-offs analysis
-- **Hands-on:** Run rabbitmq-microservices
+#### Día 6-7: Microservicios Event-Driven
+- Desacoplamiento de servicios
+- Patrones de publicación de eventos
+- Múltiples consumidores
+- Manejo de fallos
+- **Práctica:** Ejecutar kafka-microservices
 
-#### Day 10: Real-World Patterns
-- Streaming pipelines
+#### Día 8-9: Implementaciones Alternativas
+- Comparación microservicios RabbitMQ
+- Cuándo usar cada broker
+- Análisis de trade-offs
+- **Práctica:** Ejecutar rabbitmq-microservices
+
+#### Día 10: Patrones del Mundo Real
+- Pipelines de streaming
 - Event sourcing
-- CQRS patterns
-- **Hands-on:** Review real-world-project
+- Patrones CQRS
+- **Práctica:** Revisar real-world-project
 
-### Week 3: Advanced Topics
-#### Day 11-12: Production Considerations
-- Scaling strategies
-- Monitoring and observability
-- Error handling and retries
-- Data consistency
-- Disaster recovery
+### Semana 3: Temas Avanzados
 
-#### Day 13-14: Integration & Operations
-- Multi-broker setups
+#### Día 11-12: Consideraciones de Producción
+- Estrategias de escalado
+- Monitorización y observabilidad
+- Manejo de errores y reintentos
+- Consistencia de datos
+- Recuperación ante desastres
+
+#### Día 13-14: Integración y Operaciones
+- Configuraciones multi-broker
 - Kafka Streams
 - Kafka Connect
-- Monitoring with Prometheus/Grafana
+- Monitorización con Prometheus/Grafana
 
-#### Day 15: Capstone Project
-- Design and implement your own event-driven system
-- Choose between Kafka and RabbitMQ
-- Implement multiple consumers
-- Handle failures gracefully
+#### Día 15: Proyecto Final
+- Diseñar e implementar tu propio sistema event-driven
+- Elegir entre Kafka y RabbitMQ
+- Implementar múltiples consumidores
+- Manejar fallos gracefully
 
 ---
 
-## 🔗 Key Concepts Explained
+## 🔗 Conceptos Clave Explicados
 
-### Event (Message)
+### Evento (Mensaje)
 ```java
-// A piece of data that represents something that happened
+// Un dato que representa algo que sucedió
 public class OrderCreatedEvent {
-    private UUID orderId;           // Unique identifier
-    private LocalDateTime timestamp; // When it happened
-    private String status;          // Current state
-    private OrderDto order;         // Associated data
+    private UUID orderId;           // Identificador único
+    private LocalDateTime timestamp; // Cuándo sucedió
+    private String status;          // Estado actual
+    private OrderDto order;         // Datos asociados
 }
 ```
 
 ### Topic (Kafka) / Exchange (RabbitMQ)
-- **Kafka Topic:** Named channel where events are published
-- **RabbitMQ Exchange:** Router that distributes messages to queues
-- Purpose: Decouple producers from consumers
+- **Kafka Topic:** Canal con nombre donde se publican eventos
+- **RabbitMQ Exchange:** Enrutador que distribuye mensajes a colas
+- Propósito: Desacoplar productores de consumidores
 
-### Consumer Group (Kafka Specific)
-- Multiple consumers can subscribe to same topic
-- Each consumer group gets all messages
-- Messages are partitioned across group members
-- Enables scaling and fault tolerance
+### Consumer Group (Específico de Kafka)
+- Múltiples consumidores pueden suscribirse al mismo topic
+- Cada consumer group recibe todos los mensajes
+- Los mensajes se particionan entre miembros del grupo
+- Permite escalado y tolerancia a fallos
 
-### Routing Key (RabbitMQ Specific)
-- Metadata used by exchanges to route messages
-- TopicExchange supports wildcard patterns
-- Example: `order.*.confirmed` matches `order.payment.confirmed`
+### Routing Key (Específico de RabbitMQ)
+- Metadata usada por exchanges para enrutar mensajes
+- TopicExchange soporta patrones wildcard
+- Ejemplo: `order.*.confirmed` coincide con `order.payment.confirmed`
 
-### Partition (Kafka Specific)
-- Topics are split into partitions
-- Each partition is ordered independently
-- Different consumers can read different partitions
-- Enables horizontal scaling
-
----
-
-## 📈 When to Use Each Broker
-
-### Use Kafka When:
-- ✅ High-volume event streaming (millions/sec)
-- ✅ Need to replay events (immutable log)
-- ✅ Building event sourcing systems
-- ✅ Implementing CQRS
-- ✅ Long-term data retention required
-- ✅ Complex stream processing needed
-- ✅ Building data pipelines
-
-### Use RabbitMQ When:
-- ✅ Complex routing logic needed
-- ✅ Traditional message queuing patterns
-- ✅ Moderate message volume
-- ✅ Simpler setup and operations
-- ✅ Task distribution (job queue pattern)
-- ✅ Need built-in retry mechanisms
-- ✅ Flexible exchange types (Topic, Direct, Fanout)
+### Partition (Específico de Kafka)
+- Los topics se dividen en particiones
+- Cada partición se ordena independientemente
+- Diferentes consumidores pueden leer diferentes particiones
+- Permite escalado horizontal
 
 ---
 
-## 🧪 Testing Event-Driven Systems
+## 📈 Cuándo Usar Cada Broker
 
-### Unit Testing Producers
+### Usa Kafka Cuando:
+- ✅ Streaming de eventos de alto volumen (millones/seg)
+- ✅ Necesitas reproducir eventos (log inmutable)
+- ✅ Construyendo sistemas de event sourcing
+- ✅ Implementando CQRS
+- ✅ Se requiere retención de datos a largo plazo
+- ✅ Necesitas procesamiento complejo de streams
+- ✅ Construyendo pipelines de datos
+
+### Usa RabbitMQ Cuando:
+- ✅ Se necesita lógica de enrutamiento compleja
+- ✅ Patrones tradicionales de cola de mensajes
+- ✅ Volumen moderado de mensajes
+- ✅ Configuración y operaciones más simples
+- ✅ Distribución de tareas (patrón job queue)
+- ✅ Necesitas mecanismos de reintento integrados
+- ✅ Tipos de exchange flexibles (Topic, Direct, Fanout)
+
+---
+
+## 🧪 Testing de Sistemas Event-Driven
+
+### Testing Unitario de Productores
 ```java
 @Test
 void testOrderPublishing() {
@@ -581,7 +587,7 @@ void testOrderPublishing() {
 }
 ```
 
-### Integration Testing Consumers
+### Testing de Integración de Consumidores
 ```java
 @SpringBootTest
 @EmbeddedKafka(partitions = 1, brokerProperties = {
@@ -592,129 +598,133 @@ class OrderConsumerTest {
     
     @Test
     void testOrderEventProcessing() {
-        // Send event to embedded Kafka
-        // Verify consumer processed it
-        // Assert database state changed
+        // Enviar evento a Kafka embebido
+        // Verificar que consumer lo procesó
+        // Asegurar que estado de BD cambió
     }
 }
 ```
 
 ---
 
-## 💡 Best Practices
+## 💡 Mejores Prácticas
 
-### 1. Event Design
-- ✅ Include event ID and timestamp
-- ✅ Use semantic versioning for events
-- ✅ Make events immutable
-- ✅ Include all necessary context
+### 1. Diseño de Eventos
+- ✅ Incluir ID de evento y timestamp
+- ✅ Usar versionado semántico para eventos
+- ✅ Hacer eventos inmutables
+- ✅ Incluir todo el contexto necesario
 
-### 2. Consumer Reliability
-- ✅ Implement idempotency
-- ✅ Handle redelivery gracefully
-- ✅ Use DLQ (Dead Letter Queue) for failures
-- ✅ Log all important events
+### 2. Fiabilidad del Consumidor
+- ✅ Implementar idempotencia
+- ✅ Manejar reentrega gracefully
+- ✅ Usar DLQ (Dead Letter Queue) para fallos
+- ✅ Registrar todos los eventos importantes
 
-### 3. Scalability
-- ✅ Use partitions to scale consumption
-- ✅ Monitor consumer lag
-- ✅ Implement backpressure handling
-- ✅ Use consumer groups for parallel processing
+### 3. Escalabilidad
+- ✅ Usar particiones para escalar consumo
+- ✅ Monitorizar consumer lag
+- ✅ Implementar manejo de backpressure
+- ✅ Usar consumer groups para procesamiento paralelo
 
-### 4. Monitoring
-- ✅ Track message throughput
-- ✅ Monitor consumer lag
-- ✅ Alert on failures
-- ✅ Log all events for audit trail
+### 4. Monitorización
+- ✅ Rastrear throughput de mensajes
+- ✅ Monitorizar consumer lag
+- ✅ Alertar sobre fallos
+- ✅ Registrar todos los eventos para pista de auditoría
 
-### 5. Error Handling
-- ✅ Implement retry logic
-- ✅ Use Dead Letter Queues
-- ✅ Circuit breakers for failures
-- ✅ Graceful degradation
-
----
-
-## 📚 Related Collections
-- [Spring Boot Basics](https://github.com/Cortadai/spring-boot-basics) - REST API foundations
-- [Microservices Architecture](https://github.com/Cortadai/microservices-architecture) - Complete microservices setup
-- [Spring Security Course](https://github.com/Cortadai/spring-security-course) - Securing event systems
+### 5. Manejo de Errores
+- ✅ Implementar lógica de reintento
+- ✅ Usar Dead Letter Queues
+- ✅ Circuit breakers para fallos
+- ✅ Degradación graceful
 
 ---
 
-## 🏷️ Topics Applied
-All projects tagged with:
-- `#event-driven` - Event-driven architecture
-- `#messaging` - Message brokers
-- `#microservices` - Microservices patterns
-- `#learning` - Educational material
-- `#tutorial` - Tutorial style
-
-Specific topics per project:
-- Kafka projects: `#kafka`, `#streaming`
-- RabbitMQ projects: `#rabbitmq`, `#amqp`
-- Microservices: `#spring-boot`, `#distributed-systems`
-- Real-world: `#production`, `#real-world-project`
+## 📚 Colecciones Relacionadas
+- [Spring Boot Basics](https://github.com/Cortadai/spring-boot-basics) - Fundamentos de API REST
+- [Microservices Architecture](https://github.com/Cortadai/microservices-architecture) - Configuración completa de microservicios
+- [Spring Security Course](https://github.com/Cortadai/spring-security-course) - Asegurando sistemas de eventos
 
 ---
 
-## 📊 Project Stats
-| Metric | Value |
-|--------|-------|
-| **Total Projects** | 6 |
+## 🏷️ Topics Aplicados
+
+Todos los proyectos etiquetados con:
+- `#event-driven` - Arquitectura event-driven
+- `#mensajeria` - Message brokers
+- `#microservicios` - Patrones de microservicios
+- `#aprendizaje` - Material educativo
+- `#tutorial` - Estilo tutorial
+
+Topics específicos por proyecto:
+- Proyectos Kafka: `#kafka`, `#streaming`
+- Proyectos RabbitMQ: `#rabbitmq`, `#amqp`
+- Microservicios: `#spring-boot`, `#sistemas-distribuidos`
+- Mundo real: `#produccion`, `#proyecto-real`
+
+---
+
+## 📊 Estadísticas del Proyecto
+
+| Métrica | Valor |
+|---------|-------|
+| **Total Proyectos** | 6 |
 | **Message Brokers** | 2 (Kafka, RabbitMQ) |
-| **Microservices** | 6 (across all projects) |
-| **Learning Level** | Beginner to Advanced |
-| **Estimated Learning Time** | 3-4 weeks |
+| **Microservicios** | 6 (en todos los proyectos) |
+| **Nivel de Aprendizaje** | Principiante a Avanzado |
+| **Tiempo Estimado de Aprendizaje** | 3-4 semanas |
 
 ---
 
-## 🎓 Learning Outcomes
-After completing this collection, you'll understand:
-- ✅ Asynchronous event-driven architecture
-- ✅ Apache Kafka concepts and usage
-- ✅ RabbitMQ message brokering
-- ✅ Producer-consumer patterns
-- ✅ Building event-driven microservices
-- ✅ Real-time event streaming
-- ✅ Handling high-volume events
-- ✅ Event persistence and audit trails
-- ✅ Consumer groups and scaling
-- ✅ Error handling in async systems
-- ✅ Comparing broker architectures
-- ✅ Production deployment patterns
+## 🎓 Resultados de Aprendizaje
+
+Después de completar esta colección, comprenderás:
+- ✅ Arquitectura asíncrona event-driven
+- ✅ Conceptos y uso de Apache Kafka
+- ✅ Message brokering con RabbitMQ
+- ✅ Patrones producer-consumer
+- ✅ Construcción de microservicios event-driven
+- ✅ Streaming de eventos en tiempo real
+- ✅ Manejo de eventos de alto volumen
+- ✅ Persistencia de eventos y pistas de auditoría
+- ✅ Consumer groups y escalado
+- ✅ Manejo de errores en sistemas async
+- ✅ Comparación de arquitecturas de brokers
+- ✅ Patrones de despliegue en producción
 
 ---
 
-## 📬 Additional Resources
+## 📬 Recursos Adicionales
 
-### Official Documentation
-- [Apache Kafka Documentation](https://kafka.apache.org/documentation/)
-- [RabbitMQ Documentation](https://www.rabbitmq.com/documentation.html)
-- [Spring Kafka Documentation](https://spring.io/projects/spring-kafka)
-- [Spring AMQP Documentation](https://spring.io/projects/spring-amqp)
+### Documentación Oficial
+- [Documentación Apache Kafka](https://kafka.apache.org/documentation/)
+- [Documentación RabbitMQ](https://www.rabbitmq.com/documentation.html)
+- [Documentación Spring Kafka](https://spring.io/projects/spring-kafka)
+- [Documentación Spring AMQP](https://spring.io/projects/spring-amqp)
 
-### Tutorials & Guides
+### Tutoriales y Guías
 - [Kafka Quick Start](https://kafka.apache.org/quickstart)
-- [RabbitMQ Tutorials](https://www.rabbitmq.com/getstarted.html)
-- [Event-Driven Architecture Patterns](https://www.eventdrivenarchitecture.io/)
+- [Tutoriales RabbitMQ](https://www.rabbitmq.com/getstarted.html)
+- [Patrones Event-Driven Architecture](https://www.eventdrivenarchitecture.io/)
 
-### Tools & Utilities
-- [Kafdrop](https://github.com/obsidiandynamics/kafdrop) - Kafka UI
+### Herramientas y Utilidades
+- [Kafdrop](https://github.com/obsidiandynamics/kafdrop) - UI de Kafka
 - [RabbitMQ Management UI](https://www.rabbitmq.com/management.html)
-- [Kafka Cat (kcat)](https://github.com/edenhill/kcat) - Command-line tool
+- [Kafka Cat (kcat)](https://github.com/edenhill/kcat) - Herramienta de línea de comandos
 
 ---
 
-## 🎯 Next Steps
-1. **Start with tutorials:** kafka-tutorial and rabbitmq-tutorial
-2. **Understand basics:** Message brokers, producers, consumers
-3. **Move to microservices:** See how multiple services communicate
-4. **Explore real-world:** Learn from kafka-real-world-project
-5. **Build your own:** Create an event-driven application
-6. **Optimize:** Learn scaling, monitoring, and operations
+## 🎯 Próximos Pasos
+
+1. **Empezar con tutoriales:** kafka-tutorial y rabbitmq-tutorial
+2. **Entender básicos:** Message brokers, productores, consumidores
+3. **Pasar a microservicios:** Ver cómo múltiples servicios se comunican
+4. **Explorar mundo real:** Aprender de kafka-real-world-project
+5. **Construir el tuyo propio:** Crear una aplicación event-driven
+6. **Optimizar:** Aprender escalado, monitorización y operaciones
 
 ---
 
-*Last updated: November 2025*
-*Hub: Event-Driven & Messaging Architecture v1.0*
+*Última actualización: Noviembre 2025*
+*Hub: Arquitectura Event-Driven y Mensajería v1.0*
