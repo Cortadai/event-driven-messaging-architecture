@@ -7,6 +7,7 @@ Proyectos avanzados que demuestran patrones de comunicación asíncrona, message
 ## 🆕 Proyectos Recientes (Diciembre 2025)
 
 ### **[poc-05-rabbitmq](https://github.com/Cortadai/poc-05-rabbitmq)** ⭐
+
 Introducción práctica a RabbitMQ con Spring Boot. Cubre los conceptos esenciales de mensajería: tipos de exchanges (direct, topic, fanout, headers), bindings, queues, Dead Letter Queues (DLQ) y patrones de retry. Incluye productor/consumidor funcionales y documentación didáctica.
 
 - **Tecnología:** Spring Boot 3.x, RabbitMQ, Docker
@@ -14,13 +15,16 @@ Introducción práctica a RabbitMQ con Spring Boot. Cubre los conceptos esencial
 - **Conceptos Clave:** Exchanges, Bindings, DLQ, Retry patterns
 - **Perfecto Para:** Aprender fundamentos de mensajería desde cero
 
+```
 Productor → Exchange → Queue → Consumer
-               ↓
-          DLQ (errores) → Retry
+                ↓
+           DLQ (errores) → Retry
+```
 
 ---
 
 ### **[rabbitmq-msvcs-example](https://github.com/Cortadai/rabbitmq-msvcs-example)** ⭐
+
 Arquitectura event-driven con RabbitMQ y Spring Boot. Implementa comunicación asíncrona entre microservicios, gestión de solicitudes con estados, patrones de escalado horizontal y procesamiento distribuido. Demuestra cómo desacoplar servicios mediante mensajería.
 
 - **Tecnología:** Spring Boot 3.x, RabbitMQ, Docker Compose
@@ -28,13 +32,15 @@ Arquitectura event-driven con RabbitMQ y Spring Boot. Implementa comunicación a
 - **Conceptos Clave:** Event-driven, escalado horizontal, gestión de estados
 - **Perfecto Para:** Entender microservicios desacoplados con mensajería
 
-┌─────────────┐      ┌──────────────┐     ┌─────────────────┐
+```
+┌─────────────┐     ┌──────────────┐     ┌─────────────────┐
 │   API REST  │────▶│   RabbitMQ   │────▶│  Microservicios │
 │ (Solicitudes)│     │  (Exchange)  │     │  (Consumidores) │
-└─────────────┘      └──────────────┘     └─────────────────┘
-                          │
-                   Escalado horizontal
-                   Procesamiento distribuido
+└─────────────┘     └──────────────┘     └─────────────────┘
+                           │
+                    Escalado horizontal
+                    Procesamiento distribuido
+```
 
 ---
 
