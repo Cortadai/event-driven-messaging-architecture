@@ -4,6 +4,40 @@ Proyectos avanzados que demuestran patrones de comunicación asíncrona, message
 
 ---
 
+## 🆕 Proyectos Recientes (Diciembre 2025)
+
+### **[poc-05-rabbitmq](https://github.com/Cortadai/poc-05-rabbitmq)** ⭐
+Introducción práctica a RabbitMQ con Spring Boot. Cubre los conceptos esenciales de mensajería: tipos de exchanges (direct, topic, fanout, headers), bindings, queues, Dead Letter Queues (DLQ) y patrones de retry. Incluye productor/consumidor funcionales y documentación didáctica.
+
+- **Tecnología:** Spring Boot 3.x, RabbitMQ, Docker
+- **Nivel:** Principiante
+- **Conceptos Clave:** Exchanges, Bindings, DLQ, Retry patterns
+- **Perfecto Para:** Aprender fundamentos de mensajería desde cero
+
+Productor → Exchange → Queue → Consumer
+               ↓
+          DLQ (errores) → Retry
+
+---
+
+### **[rabbitmq-msvcs-example](https://github.com/Cortadai/rabbitmq-msvcs-example)** ⭐
+Arquitectura event-driven con RabbitMQ y Spring Boot. Implementa comunicación asíncrona entre microservicios, gestión de solicitudes con estados, patrones de escalado horizontal y procesamiento distribuido. Demuestra cómo desacoplar servicios mediante mensajería.
+
+- **Tecnología:** Spring Boot 3.x, RabbitMQ, Docker Compose
+- **Nivel:** Intermedio
+- **Conceptos Clave:** Event-driven, escalado horizontal, gestión de estados
+- **Perfecto Para:** Entender microservicios desacoplados con mensajería
+
+┌─────────────┐      ┌──────────────┐     ┌─────────────────┐
+│   API REST  │────▶│   RabbitMQ   │────▶│  Microservicios │
+│ (Solicitudes)│     │  (Exchange)  │     │  (Consumidores) │
+└─────────────┘      └──────────────┘     └─────────────────┘
+                          │
+                   Escalado horizontal
+                   Procesamiento distribuido
+
+---
+
 ## 📚 Resumen de Proyectos
 
 ### Proyectos Fundamentales (Aprender los Básicos)
@@ -726,5 +760,5 @@ Después de completar esta colección, comprenderás:
 
 ---
 
-*Última actualización: Noviembre 2025*
+*Última actualización: Diciembre 2025*
 *Hub: Arquitectura Event-Driven y Mensajería v1.0*
